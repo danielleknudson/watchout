@@ -24,10 +24,19 @@ var newLocation = function(d) {
 };
 
 // create enemies
-svg.selectAll("enemies")
+var enemies = svg.selectAll("circle")
 .data(enemyArray)
 .enter()
 .append("circle")
 .attr("r", 10)
 .attr("transform", newLocation);
 
+var enemyMove = function(){
+//   debugger;
+  enemies
+    .transition(1000)
+    .attr("transform", newLocation);
+};
+
+setInterval(enemyMove, 2000);
+//  enemyMove();
