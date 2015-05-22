@@ -13,7 +13,7 @@ var player = d3.select("svg").append("path")
   // .call(drag);
 var dragMove = d3.behavior.drag()
   .on('drag', function(){
-    player.attr('transform', 'translate('+d3.event.x+','+d3.event.y+')')
+    player.attr('transform', 'translate('+Math.max(Math.min(700,d3.event.x),0)+','+Math.max(Math.min(450, d3.event.y),0)+')')
   });
 
 player.call(dragMove);
@@ -41,7 +41,8 @@ var enemies = svg.selectAll("circle")
 
 var enemyMove = function(){
   enemies
-    .transition(1000)
+    .transition()
+      .duration(2000)
     .attr("transform", newLocation);
 };
 
