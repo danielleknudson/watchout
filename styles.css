@@ -3,6 +3,18 @@
 /* Note: an asteroid image is included in this repo.
 Feel free to use it if you like. */
 
+body {
+  background-color:black;
+}
+
+div {
+  color: gray;
+}
+
+svg {
+  border: 1px solid #333;
+}
+
 circle {
     transform-origin: center center;
     -webkit-animation: rotation 1s infinite linear;
