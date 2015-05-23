@@ -15,7 +15,7 @@ svg {
   border: 1px solid #333;
 }
 
-circle {
+.enemy {
     transform-origin: center center;
     -webkit-animation: rotation 1s infinite linear;
 }
