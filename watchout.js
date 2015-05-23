@@ -46,4 +46,32 @@ var enemyMove = function(){
     .attr("transform", newLocation);
 };
 
+// function that checks if there's a collision
+// d3.transform(enemies.attr("transform")).translate
+var checkCollision = function(){
+  enemies.each(function(d,i){
+    var enemyX = d3.transform(d3.select(this).attr("transform")).translate[0];
+    var enemyY = d3.transform(d3.select(this).attr("transform")).translate[1];
+    var playerX = d3.transform(player.attr("transform")).translate[0];
+    var playerY = d3.transform(player.attr("transform")).translate[1];
+
+    var distance = Math.sqrt( Math.pow((enemyX - playerX), 2) + Math.pow((enemyY - playerY), 2));
+
+    if (distance < 15){
+      if (+d3.select(".current span").text() > +d3.select(".high span").text()) {
+        d3.select(".high span").text(d3.select(".current span").text());
+      }
+      score = 0;
+      d3.select(".current span").text(score);
+    }
+  });
+};
+
+var score = 0;
+
+setInterval(function(){
+  score++;
+  d3.select(".current span").text(score);
+},1000);
+setInterval(checkCollision, 50);
 setInterval(enemyMove, 2000);
